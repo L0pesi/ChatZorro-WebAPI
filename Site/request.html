@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+		$.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "http://localhost:58632/users/authenticate",
+        async: false,
+        dataType: "json",
+		data: JSON.stringify({
+            "Username": "peixeiratvi@hotmail.com",
+            "Password": "vouvenderpeixe",
+        }),
+    }).done(function (data) {
+        alert("Sucesso.");
+		console.log(data);
+    }).fail(function (data) {
+        alert("Ocorreu um erro.");
+    });
+    </script>
+</body>
+
+</html>

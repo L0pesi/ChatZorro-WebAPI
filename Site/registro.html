@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Registra-te em Chat Zorro</title>
+  <link rel="stylesheet" type="text/css" href="stylelogin.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <section id="content">
+      <p>
+        <center><img src="images/logov1.jpg" height="40%" width="40%" alt="logo"></center>
+      </p>
+      <br>
+      <form>
+        <h1>Registro</h1>
+        <div>
+            <input id="regFname" type="text" placeholder="Nome" required="required" id="firstname" />
+          </div>
+          <div>
+            <input id="regLname" type="text" placeholder="Apelido" required="required" id="lastname" />
+          </div>
+        <div>
+          <input id="regUsername" type="text" placeholder="email@chatzorro.com" required="required" id="username" />
+        </div>
+        <div>
+            <input id="regPassword" type="password" placeholder="Password" required="required" id="password" />
+          </div>
+        <div>
+          <input type="button" value="Registrar" onclick="registrar()" />
+          <a href="recuperar.html">Recuperar a password</a>
+          <a href="index.html">Ir Login</a>
+          <br>
+        </div>
+      </form><!-- form -->
+
+    </section><!-- content -->
+  </div><!-- container -->
+<!-- 
+  <script type="text/javascript" >
+    {
+      var strTest = "This is my session"; 
+      PageMethods.CreateSessionViaJavascript(strTest);
+    }
+    </script> -->
+
+  <script>
+    function registrar() {
+      $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "http://localhost:58632/users/registration",
+        async: false,
+        dataType: "json",
+        data: JSON.stringify({
+          "Firstname": $("#regFname").val(),
+          "Lastname": $("#regLname").val(),
+          "Username": $("#regUsername").val(),
+          "Password": $("#regPassword").val(),
+        }),
+      }).done(function (data) {
+        alert("Registro feito com Sucesso.");
+        //code here
+        //profile
+        //window.name = JSON.stringify(data);
+        window.location = "index.html";
+
+        //console.log(window.name);
+      }).fail(function (data) {
+        alert("Ocorreu um erro: " + data.responseText);
+      });
+    }
+  </script>
+</body>
+
+</html>

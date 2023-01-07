@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Chat Zorro</title>
+  <link rel="stylesheet" type="text/css" href="stylelogin.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <section id="content">
+      <p>
+        <center><img src="images/logov1.jpg" height="40%" width="40%" alt="logo"></center>
+      </p>
+      <br>
+      <form>
+        <h1>Login</h1>
+        <div>
+          <input id="txtUsername" type="text" placeholder="Username" required="" id="username" />
+        </div>
+        <div>
+          <input id="txtPassword" type="password" placeholder="Password" required="" id="password" />
+        </div>
+        <div>
+          <input type="button" value="Log in" onclick="login()" />
+          <a href="recuperar.html">Recuperar a password</a>
+          <a href="registro.html">Registra-te</a>
+          <br>
+        </div>
+      </form><!-- form -->
+
+    </section><!-- content -->
+  </div><!-- container -->
+<!-- 
+  <script type="text/javascript" >
+    {
+      var strTest = "This is my session"; 
+      PageMethods.CreateSessionViaJavascript(strTest);
+    }
+    </script> -->
+
+  <script>
+    function login() {
+      $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "http://localhost:58632/users/authenticate",
+        async: false,
+        dataType: "json",
+        data: JSON.stringify({
+          "Username": $("#txtUsername").val(),
+          "Password": $("#txtPassword").val(),
+        }),
+      }).done(function (data) {
+        alert("Sucesso.");
+        //code here
+        //profile
+        data.password = $("#txtPassword").val();
+        window.name = JSON.stringify(data);
+        window.location = "main.html";
+
+        console.log(window.name);
+      }).fail(function (data) {
+        alert("Ocorreu um erro: " + data.responseText);
+      });
+    }
+  </script>
+</body>
+
+</html>

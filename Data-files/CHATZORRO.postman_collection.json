@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "faea63a2-8cfe-4a24-aad9-3c87620720f7",
+		"name": "CHATZORRO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"Username\": \"andrettim@gmail.com\",\r\n   \"Password\": \"bmwandretti\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:58632/users/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58632",
+					"path": [
+						"users",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "zeto@hotmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "magicobraga2021",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ChatCode\": 1,\r\n    \"Text\": \"Não cantas nada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:58632/message/Send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58632",
+					"path": [
+						"message",
+						"Send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sincronize Messages",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "bmwandretti",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "andrettim@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:58632/message/Sincronize",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58632",
+					"path": [
+						"message",
+						"Sincronize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FirstName\": \"Diogo\",\r\n    \"LastName\": \"Rocha\",\r\n    \"UserName\": \"diegoroick@gmail.com\",\r\n    \"Password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:58632/users/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58632",
+					"path": [
+						"users",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contacts",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "magicobraga2021",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "zeto@hotmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:58632/users/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58632",
+					"path": [
+						"users",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Message",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "magicobraga2021",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "zeto@hotmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "code",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:58632/message/Delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58632",
+					"path": [
+						"message",
+						"Delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
