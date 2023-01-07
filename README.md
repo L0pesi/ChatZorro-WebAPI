@@ -40,7 +40,7 @@ _Below is an instruct on installing and setting up your app._
   ### RUN
   1. RUN and enjoy
    ```sh
-   RUN and use with ChatZorroHTML from 'site' folder
+   RUN and use with ChatZorroHTML from 'site' folder by acessing 'index.html'
    ```
    
    
